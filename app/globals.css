@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  /* Um Âmbar/Cobre profundo que contrasta perfeitamente no fundo claro */
+  --color-electric: #D97706;
+}
+
+@layer base {
+  body {
+    /* Fundo quase branco (suave) e texto chumbo profundo */
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+}
+
+/* Barra de rolagem para fundos claros */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
+}
