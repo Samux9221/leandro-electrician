@@ -25,3 +25,17 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-slate-400;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Pausa a animação se o usuário passar o mouse por cima (boa prática de acessibilidade) */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
