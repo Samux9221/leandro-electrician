@@ -1,24 +1,27 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import TrustBar from "../components/TrustBar";
-import Services from "../components/Services";
+import LowVoltagePrimary from "../components/LowVoltagePrimary"; 
 import BeforeAfter from "../components/BeforeAfter";
+import CoreElectrical from "../components/CoreElectrical"; // <-- AQUI! O novo componente escuro
 import Testimonials from "../components/Testimonials";
 import MeetThePro from "../components/MeetThePro";
-import ContactForm from "../components/ContactForm"; // Novo
-import Footer from "../components/Footer"; // Novo
+import ContactForm from "../components/ContactForm";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[#FBFBFD] text-slate-900 selection:bg-amber-100">
       <Navbar />
       <Hero />
       <TrustBar />
-      <Services />
+      <LowVoltagePrimary /> 
       <BeforeAfter />
+      <CoreElectrical /> {/* Quebra o design com o fundo Dark, excelente para retenção */}
       <Testimonials />
       <MeetThePro />
-      <ContactForm />
+      <TrustBar />
+        <ContactForm />
       <Footer />
     </main>
   );

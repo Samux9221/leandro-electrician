@@ -1,56 +1,123 @@
+"use client";
+
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import { useRef } from "react";
 
-export default function HeroPremium() {
+const BackgroundSchema = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-50">
+    <svg 
+      className="absolute inset-0 w-full h-full opacity-[0.03]" 
+      width="100%" 
+      height="100%" 
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.5" fill="#0F172A" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
       
-      {/* Background Abstrato/Suave para destacar a tipografia */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-200/50 via-slate-50 to-slate-50 -z-10"></div>
+      <motion.path
+        d="M -100,200 L 150,300 L 400,100 L 800,400 L 1200,200"
+        stroke="#F59E0B" 
+        strokeWidth="1"
+        fill="none"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 2, ease: "easeInOut" }}
+      />
+      <motion.path
+        d="M 1300,500 L 1000,600 L 600,400 L 200,700 L -200,500"
+        stroke="#64748B"
+        strokeWidth="0.5"
+        fill="none"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
+      />
+    </svg>
+  );
+};
 
-      <div className="max-w-6xl mx-auto px-6 w-full flex flex-col relative z-10 pt-20">
-        
-        {/* Etiqueta de Status */}
-        <div className="flex items-center gap-2 mb-8 animate-fade-in-up">
-          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-          <span className="text-sm font-medium tracking-widest uppercase text-slate-500">
-            Available for emergency dispatch in NYC
-          </span>
-        </div>
+export default function Hero() {
+  const targetRef = useRef(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end start"],
+  });
 
-        {/* Tipografia "Sleek" e Imponente */}
-        <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-slate-900 leading-[0.9] max-w-4xl">
-          Engineered for <br />
-          <span className="text-slate-400">Absolute Safety.</span>
-        </h1>
-        
-        <p className="mt-8 text-xl text-slate-600 max-w-xl leading-relaxed font-light">
-          Master-level electrical contracting for high-end residential and commercial properties. Licensed, insured, and uncompromising on code compliance.
-        </p>
-        
-        <div className="mt-12 flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-          <a href="#contact" className="bg-slate-900 text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-slate-800 transition-all flex items-center gap-3">
-            Request an Inspection <ArrowRight size={20} />
-          </a>
-        </div>
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  const linesY = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"]);
 
-        {/* Card de Autoridade com Glassmorphism e Espaço Negativo */}
-        <div className="absolute right-0 bottom-[-100px] lg:bottom-10 hidden lg:flex flex-col gap-4">
-          <div className="bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-6 rounded-3xl w-72 transform rotate-[-2deg] transition-transform hover:rotate-0 duration-500">
-            <div className="flex items-center gap-4 mb-3">
-              <div className="bg-slate-900 text-white p-2 rounded-xl">
-                <ShieldCheck size={24} />
-              </div>
-              <h3 className="font-bold text-slate-900 leading-tight">Master <br/>Electrician</h3>
-            </div>
-            <p className="text-sm text-slate-600">Fully Licensed & Insured to operate across all NYC boroughs and New Jersey.</p>
-            <div className="mt-4 pt-4 border-t border-slate-200/50 flex justify-between items-center">
-               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">License #</span>
-               <span className="text-sm font-mono text-slate-900">NYC-88392</span>
-            </div>
+  return (
+    // Ajuste chave: min-h-[calc(100vh-5rem)] garante que ocupe exatamente a altura da tela menos a Navbar (h-20 = 5rem)
+    <section 
+      ref={targetRef}
+      className="relative min-h-[calc(100vh-5rem)] mt-20 flex items-center py-8 px-6 max-w-[90rem] mx-auto overflow-hidden bg-[#FBFBFD]"
+    >
+      <motion.div style={{ y: linesY }} className="absolute inset-0 -z-10">
+        <BackgroundSchema />
+      </motion.div>
+
+      <div className="absolute top-0 right-1/4 -z-10 w-[500px] h-[500px] bg-amber-50 rounded-full blur-[100px] opacity-60" />
+
+      {/* Container principal ajustado para alinhar perfeitamente sem sobras excessivas */}
+      <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 w-full">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex-1 text-left z-10"
+        >
+          <div className="inline-flex items-center gap-2 bg-white border border-slate-100 shadow-sm text-slate-600 font-medium px-4 py-2 rounded-full text-sm mb-6 transition-all hover:border-amber-100">
+            <ShieldCheck size={16} className="text-amber-500" />
+            <span>Licensed & Insured NYC / NJ</span>
           </div>
-        </div>
+          
+          {/* Tipografia reduzida para não quebrar a tela, mas mantendo a imponência */}
+          <h1 className="text-5xl lg:text-[5.5rem] xl:text-8xl font-extrabold tracking-tighter text-slate-950 leading-[0.95] mb-6">
+            Low Voltage.<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-slate-700 to-slate-500">
+              Expert Electrical.
+            </span>
+          </h1>
+          
+          <p className="text-lg lg:text-xl text-slate-600 max-w-xl leading-relaxed mb-8 font-medium">
+            We integrate high-performance networking, smart automation, and master-level power systems for NYC's premier residential and commercial properties.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a href="#contact" className="group bg-slate-950 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-3 shadow-lg active:scale-95">
+              Request Estimate 
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#services" className="bg-white border border-slate-200 text-slate-950 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 transition-all text-center">
+              Our Solutions
+            </a>
+          </div>
+        </motion.div>
 
+        <motion.div 
+          style={{ y: imageY }} 
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          // Ajuste chave: Limitando a altura máxima da imagem (max-h-[70vh]) para que ela nunca force o scroll da tela
+          className="flex-1 w-full relative h-[40vh] lg:h-auto lg:max-h-[70vh] aspect-square lg:aspect-[4/3] rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white"
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070&auto=format&fit=crop" 
+            alt="Premier NYC Property with Integrated Technology" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#FBFBFD] to-transparent" />
+        </motion.div>
       </div>
+      
     </section>
   );
 }
