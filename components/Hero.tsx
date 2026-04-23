@@ -1,46 +1,56 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 
-export default function Hero() {
+export default function HeroPremium() {
   return (
-    <section className="pt-32 pb-16 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-50">
       
-      {/* Coluna da Esquerda: Copy e Conversão */}
-      <div className="flex-1 text-left mt-10 lg:mt-0">
-        {/* Selo de Confiança */}
-        <div className="inline-block bg-slate-100 text-slate-700 font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-slate-200">
-          Licensed & Insured in NJ & NYC
-        </div>
+      {/* Background Abstrato/Suave para destacar a tipografia */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-200/50 via-slate-50 to-slate-50 -z-10"></div>
+
+      <div className="max-w-6xl mx-auto px-6 w-full flex flex-col relative z-10 pt-20">
         
-        <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
-          Flawless Electrical Work for <span className="text-amber-600">Your Space.</span>
+        {/* Etiqueta de Status */}
+        <div className="flex items-center gap-2 mb-8 animate-fade-in-up">
+          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+          <span className="text-sm font-medium tracking-widest uppercase text-slate-500">
+            Available for emergency dispatch in NYC
+          </span>
+        </div>
+
+        {/* Tipografia "Sleek" e Imponente */}
+        <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-slate-900 leading-[0.9] max-w-4xl">
+          Engineered for <br />
+          <span className="text-slate-400">Absolute Safety.</span>
         </h1>
         
-        <p className="mt-6 text-lg text-slate-600 max-w-lg leading-relaxed">
-          Fast response times, transparent pricing, and uncompromising safety. We deliver premium residential and commercial solutions done right the first time.
+        <p className="mt-8 text-xl text-slate-600 max-w-xl leading-relaxed font-light">
+          Master-level electrical contracting for high-end residential and commercial properties. Licensed, insured, and uncompromising on code compliance.
         </p>
         
-        <div className="mt-10 flex flex-col sm:flex-row gap-4">
-          <a href="#contact" className="bg-slate-900 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-            Request a Quote <ArrowRight size={20} />
-          </a>
-          <a href="#services" className="bg-white border border-slate-200 text-slate-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 transition-all text-center">
-            Our Services
+        <div className="mt-12 flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+          <a href="#contact" className="bg-slate-900 text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-slate-800 transition-all flex items-center gap-3">
+            Request an Inspection <ArrowRight size={20} />
           </a>
         </div>
-      </div>
 
-      {/* Coluna da Direita: Imagem Placeholder Premium */}
-      <div className="flex-1 w-full relative h-[400px] lg:h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-100">
-        {/* Usando uma imagem temporária do Unsplash que passa a ideia de precisão */}
-        <img 
-          src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop" 
-          alt="Precision Electrical Work" 
-          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-        />
-        {/* Overlay sutil para a imagem não competir com o texto e manter o ar sofisticado */}
-        <div className="absolute inset-0 bg-slate-900/10 mix-blend-overlay pointer-events-none"></div>
+        {/* Card de Autoridade com Glassmorphism e Espaço Negativo */}
+        <div className="absolute right-0 bottom-[-100px] lg:bottom-10 hidden lg:flex flex-col gap-4">
+          <div className="bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-6 rounded-3xl w-72 transform rotate-[-2deg] transition-transform hover:rotate-0 duration-500">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="bg-slate-900 text-white p-2 rounded-xl">
+                <ShieldCheck size={24} />
+              </div>
+              <h3 className="font-bold text-slate-900 leading-tight">Master <br/>Electrician</h3>
+            </div>
+            <p className="text-sm text-slate-600">Fully Licensed & Insured to operate across all NYC boroughs and New Jersey.</p>
+            <div className="mt-4 pt-4 border-t border-slate-200/50 flex justify-between items-center">
+               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">License #</span>
+               <span className="text-sm font-mono text-slate-900">NYC-88392</span>
+            </div>
+          </div>
+        </div>
+
       </div>
-      
     </section>
   );
 }
