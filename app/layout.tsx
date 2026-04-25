@@ -13,37 +13,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // Título que aparece na aba do navegador e no Google
+  // CORREÇÃO CRÍTICA: Necessário para o Next.js resolver imagens do Open Graph
+  metadataBase: new URL("https://www.leandro-electrician.com"), 
+  
   title: {
     default: "Leandro | Intelligent Low Voltage & Master Electrical NYC",
     template: "%s | Leandro Electrical"
   },
   description: "High-performance networking, smart automation, and fully licensed electrical infrastructure for NYC's premier properties. Fast execution, zero permit delays.",
   
-  // Open Graph: É isso que o WhatsApp, Facebook e LinkedIn leem
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.leandro-electrician.com", // Substitua pelo domínio real depois
+    url: "https://www.leandro-electrician.com",
     siteName: "Leandro Electrical",
     title: "Leandro | Intelligent Low Voltage & Master Electrical NYC",
     description: "Bypass DOB red tape. Deploy enterprise networking and smart home automation with zero permit delays in NYC.",
     images: [
       {
-        url: "/og-image.jpg", // Caminho da imagem que criaremos
+        // Imagem Premium de NYC à noite, com proporção exata de OG (1200x630)
+        url: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1200&h=630&auto=format&fit=crop", 
         width: 1200,
         height: 630,
-        alt: "Leandro Electrical - NYC Premier Properties",
+        alt: "Leandro Electrical - NYC Premier Properties & Infrastructure",
       },
     ],
   },
   
-  // Twitter Card: Para links no Twitter/X e iMessage em alguns casos
   twitter: {
     card: "summary_large_image",
     title: "Leandro | Master Electrical NYC",
     description: "Intelligent low voltage and electrical infrastructure for NYC's premier properties.",
-    images: ["/og-image.jpg"],
+    images: ["https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1200&h=630&auto=format&fit=crop"],
   },
 };
 
