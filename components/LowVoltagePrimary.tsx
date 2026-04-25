@@ -1,20 +1,22 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Wifi, Home, ShieldCheck, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
+// Expandimos os dados para oferecer a profundidade que o cliente sentiu falta no benchmark.
+// Foco agressivo em marcas premium (Lutron, Brivo) e na vantagem "Permit-Free".
 const features = [
   {
     id: "smart-home",
-    title: "Smart Home Integration",
-    tagline: "The Future of Living",
-    description: "Complete ecosystem control. We don't just install devices; we engineer environments that anticipate your needs.",
+    title: "Architectural Smart Home",
+    tagline: "Luxury & Convenience",
+    description: "We engineer invisible technology ecosystems for high-end residential spaces. Complete climate, lighting, and AV control without the aesthetic clutter.",
     details: [
-      "Lutron & Savant Lighting Control",
-      "Multi-room 8K Video Distribution",
-      "Invisible Sonance Audio Systems",
-      "Climate & Shading Automation"
+      "Lutron Lighting Control",
+      "Motorized Custom Shading",
+      "Invisible Audio Systems",
+      "Rapid Deploy (No DOB Delays)"
     ],
     icon: <Home size={32} />,
     colSpan: "lg:col-span-2",
@@ -22,20 +24,20 @@ const features = [
   },
   {
     id: "networking",
-    title: "Networking",
-    tagline: "Enterprise Grade",
-    description: "Eliminate downtime with military-grade WiFi 7 and fiber-optic backbones.",
-    details: ["WiFi 7 Heatmapping", "Fiber Optic Splicing", "Rack Management"],
+    title: "Enterprise Networking",
+    tagline: "Zero Downtime",
+    description: "Military-grade WiFi 7 and structured cabling designed for mission-critical commercial spaces and heavy data loads.",
+    details: ["Fiber Optic Backbones", "WiFi 7 Heatmapping", "Server Rack Management"],
     icon: <Wifi size={32} />,
     colSpan: "lg:col-span-1",
     image: null,
   },
   {
     id: "security",
-    title: "Security Systems",
+    title: "Advanced Access & Security",
     tagline: "Protection 2.0",
-    description: "Advanced AI-driven surveillance and biometric access for NYC's elite properties.",
-    details: ["AI Human Detection", "Remote Gate Control", "Secure Data Storage"],
+    description: "Protect your NYC assets remotely. We install AI-driven surveillance and cloud-based intercoms that bypass heavy electrical permitting.",
+    details: ["Brivo & ButterflyMX", "AI Human/Vehicle Detection", "Cloud-Managed Access"],
     icon: <ShieldCheck size={32} />,
     colSpan: "lg:col-span-3",
     image: null,
@@ -44,7 +46,7 @@ const features = [
 
 export default function LowVoltagePrimary() {
   return (
-    <section className="py-32 px-6 max-w-[90rem] mx-auto bg-white">
+    <section id="services" className="py-32 px-6 max-w-[90rem] mx-auto bg-white">
       <div className="mb-20">
         <motion.span 
           initial={{ opacity: 0 }}
@@ -53,10 +55,14 @@ export default function LowVoltagePrimary() {
         >
           Specialized Solutions
         </motion.span>
+        {/* Headline aprimorada para focar no benefício principal */}
         <h2 className="text-slate-950 text-5xl md:text-7xl font-extrabold tracking-tighter mb-8">
-          The Low Voltage <br />
-          <span className="text-slate-400">Revolution.</span>
+          High-Tech. <br />
+          <span className="text-slate-400">Low Friction.</span>
         </h2>
+        <p className="text-lg text-slate-600 max-w-2xl font-medium">
+          By leveraging low-voltage architecture, we deploy cutting-edge systems in a fraction of the time it takes for traditional electrical work, bypassing strict NYC permit bottlenecks.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -81,7 +87,6 @@ function ServiceCard({ feature, index }: { feature: any; index: number }) {
       transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className={`group relative rounded-[3rem] p-12 overflow-hidden border border-slate-100 transition-all duration-500 shadow-sm hover:shadow-2xl hover:border-amber-200/50 ${feature.colSpan} ${feature.image ? 'min-h-[500px]' : 'min-h-[400px] bg-slate-50'}`}
     >
-      {/* Background Image Logic */}
       {feature.image && (
         <>
           <motion.img 
@@ -94,7 +99,6 @@ function ServiceCard({ feature, index }: { feature: any; index: number }) {
         </>
       )}
 
-      {/* Content */}
       <div className={`relative z-20 h-full flex flex-col justify-between ${feature.image ? 'text-white' : 'text-slate-950'}`}>
         <div>
           <motion.div 
@@ -114,23 +118,23 @@ function ServiceCard({ feature, index }: { feature: any; index: number }) {
             {feature.description}
           </p>
 
-          {/* New Informative Layer: Details List */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
             {feature.details.map((detail: string) => (
               <div key={detail} className="flex items-center gap-2">
                 <CheckCircle2 size={16} className={feature.image ? "text-amber-400" : "text-amber-600"} />
-                <span className="text-sm font-medium opacity-80">{detail}</span>
+                <span className="text-sm font-medium opacity-90">{detail}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <motion.div 
+        <motion.a 
+          href="#contact"
           animate={{ x: isHovered ? 10 : 0 }}
-          className="flex items-center gap-3 font-bold text-sm uppercase tracking-widest cursor-pointer"
+          className="flex items-center gap-3 font-bold text-sm uppercase tracking-widest cursor-pointer w-max"
         >
           Explore Solution <ArrowRight size={18} />
-        </motion.div>
+        </motion.a>
       </div>
     </motion.div>
   );

@@ -8,6 +8,7 @@ import Testimonials from "../components/Testimonials";
 import MeetThePro from "../components/MeetThePro";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
+import Process from "../components/Process";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <LowVoltagePrimary /> 
+      <Process /> {/* Nova secção adicionada aqui */}
       <BeforeAfter />
       <CoreElectrical /> {/* Quebra o design com o fundo Dark, excelente para retenção */}
       <Testimonials />

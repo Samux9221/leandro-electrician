@@ -54,7 +54,6 @@ export default function Hero() {
   const linesY = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"]);
 
   return (
-    // Ajuste chave: min-h-[calc(100vh-5rem)] garante que ocupe exatamente a altura da tela menos a Navbar (h-20 = 5rem)
     <section 
       ref={targetRef}
       className="relative min-h-[calc(100vh-5rem)] mt-20 flex items-center py-8 px-6 max-w-[90rem] mx-auto overflow-hidden bg-[#FBFBFD]"
@@ -65,7 +64,6 @@ export default function Hero() {
 
       <div className="absolute top-0 right-1/4 -z-10 w-[500px] h-[500px] bg-amber-50 rounded-full blur-[100px] opacity-60" />
 
-      {/* Container principal ajustado para alinhar perfeitamente sem sobras excessivas */}
       <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 w-full">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -78,21 +76,20 @@ export default function Hero() {
             <span>Licensed & Insured NYC / NJ</span>
           </div>
           
-          {/* Tipografia reduzida para não quebrar a tela, mas mantendo a imponência */}
           <h1 className="text-5xl lg:text-[5.5rem] xl:text-8xl font-extrabold tracking-tighter text-slate-950 leading-[0.95] mb-6">
-            Low Voltage.<br />
+            Intelligent Low Voltage.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-slate-700 to-slate-500">
-              Expert Electrical.
+              Master Electrical.
             </span>
           </h1>
           
           <p className="text-lg lg:text-xl text-slate-600 max-w-xl leading-relaxed mb-8 font-medium">
-            We integrate high-performance networking, smart automation, and master-level power systems for NYC's premier residential and commercial properties.
+            High-performance networking and smart automation for NYC's premier properties. Fast execution, zero permit delays, and full DOB compliance.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="#contact" className="group bg-slate-950 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-3 shadow-lg active:scale-95">
-              Request Estimate 
+              Get a Consultation
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a href="#services" className="bg-white border border-slate-200 text-slate-950 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 transition-all text-center">
@@ -106,7 +103,6 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          // Ajuste chave: Limitando a altura máxima da imagem (max-h-[70vh]) para que ela nunca force o scroll da tela
           className="flex-1 w-full relative h-[40vh] lg:h-auto lg:max-h-[70vh] aspect-square lg:aspect-[4/3] rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white"
         >
           <img 
