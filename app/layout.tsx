@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // CORREÇÃO CRÍTICA: Necessário para o Next.js resolver imagens do Open Graph
+  // Configuração obrigatória para que o Next.js gere URLs absolutas para as imagens
   metadataBase: new URL("https://www.leandro-electrician.com"), 
   
   title: {
@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     description: "Bypass DOB red tape. Deploy enterprise networking and smart home automation with zero permit delays in NYC.",
     images: [
       {
-        // Imagem Premium de NYC à noite, com proporção exata de OG (1200x630)
-        url: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1200&h=630&auto=format&fit=crop", 
+        // Imagem focada em infraestrutura tecnológica e precisão elétrica
+        url: "https://images.unsplash.com/photo-1558444479-c8475132c1d0?q=80&w=1200&h=630&auto=format&fit=crop", 
         width: 1200,
         height: 630,
-        alt: "Leandro Electrical - NYC Premier Properties & Infrastructure",
+        alt: "Leandro Electrical - Master Infrastructure & Low Voltage Systems",
       },
     ],
   },
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Leandro | Master Electrical NYC",
     description: "Intelligent low voltage and electrical infrastructure for NYC's premier properties.",
-    images: ["https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1200&h=630&auto=format&fit=crop"],
+    images: ["https://images.unsplash.com/photo-1558444479-c8475132c1d0?q=80&w=1200&h=630&auto=format&fit=crop"],
   },
 };
 
